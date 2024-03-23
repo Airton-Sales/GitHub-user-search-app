@@ -7,8 +7,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Frontend Mentor | GitHub user search app</title>
 </head>
-<body class="bg-[#141D2F] flex justify-center">
-  <header class="w-[327px] h-[38px] mt-[1.9375rem]">
+<body class="bg-[#141D2F] flex justify-center items-center flex-col">
+  <header class="w-[327px] h-[38px] mt-[1.9375rem] md:w-[573px] md:h-[38px] md:mt-[8.75rem] lg:w-[730px] lg:h-[38px] lg:mt-36">
     <nav class="flex justify-between">
       <h1 class="text-white text-[1.625rem] font-bold">devfinder</h1>
       <div class="flex items-center gap-4">
@@ -17,5 +17,23 @@
       </div>
     </nav>
   </header>
+  <section id="busca" class="bg-[#1E2A47] w-[327px] h-[60px] mt-10 flex items-center rounded-[15px] justify-around md:w-[573px] md:h-[69px] lg:w-[730px] lg:h-[69px] lg:justify-between">
+    <div class="flex ml-2 gap-2 md:gap-5 md:mr-20 lg:ml-8">
+      <img class="w-[20px] mt-1 h-[20px] md:w-[24px] md:h-[24px] md:mt-0" src="assets/icon-search.svg" alt="">
+      <input class="bg-transparent outline-none w-[184px] h-[25px] text-[#FFFFFF] text-[0.8125rem] md:w-[254px] md:h-[25px] md:text-[1.125rem]" type="text" placeholder="Search Github username">
+    </div>
+    <button class="bg-[#0079FF] rounded-[10px] w-[84px] h-[46px] text-white text-[0.875rem] font-bold md:w-[106px] md:h-[50px] md:text-[1rem] md:ml-5 lg:mr-[0.70rem]">Search</button>
+  </section>
+  <main class="bg-[#1E2A47] rounded-[15px] mt-5 w-[327px] h-[517px] md:w-[573px] md:h-[481px] lg:w-[730px] lg:h-[444px]">
+    <section class="flex gap-5 w-[234px] h-[70px] mt-8 ml-6">
+      <img class="w-[70px] h-[70px] rounded-full border-[1px] border-[#0079FF]" src="" alt="Foto de perfil">
+      <div>
+        <h2 class="text-[#FFFFFF] text-[1rem]">The Octocat</h2>
+        <h3>@octocat</h3>
+        <p>Joined 25 Jan 2011</p>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
