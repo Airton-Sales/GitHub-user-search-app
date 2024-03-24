@@ -7,7 +7,7 @@ const pmain = document.getElementById("pmainId");
 const imgNav = document.getElementById("imgNavId");
 const search = document.getElementById("searchId");
 const main = document.getElementById("mainId");
-const pDescriptionId = document.getElementById("pDescriptionId");
+const pDescription = document.getElementById("pDescriptionId");
 const statsId = document.getElementById("statsId");
 const td1 = document.getElementById("td1Id");
 const td2 = document.getElementById("td2Id");
@@ -23,6 +23,10 @@ const plocation = document.getElementById("plocationId");
 const pwebsite = document.getElementById("pwebsiteId");
 const pTwitter = document.getElementById("pTwitterId");
 const pCompany = document.getElementById("pCompanyId");
+const botãoDeBusca = document.getElementById("botãoDeBuscaId");
+const searchInput = document.getElementById("searchInputId");
+const FotoDoPerfil = document.getElementById("FotoDoPerfilId");
+const h3 = document.getElementById("h3Id");
 
 let backgroundColorDark = false;
 
@@ -33,7 +37,7 @@ button.addEventListener("click", function () {
     h2.style.color = "black";
     pNav.style.color = "#4B6A9B";
     pmain.style.color = "#697C9A";
-    pDescriptionId.style.color = "#697C9A";
+    pDescription.style.color = "#697C9A";
     search.style.backgroundColor = "#FFFFFF";
     main.style.backgroundColor = "#FFFFFF";
     statsId.style.backgroundColor = "#F6F8FF";
@@ -58,7 +62,7 @@ button.addEventListener("click", function () {
     h2.style.color = "white";
     pNav.style.color = "white";
     pmain.style.color = "#ffffff";
-    pDescriptionId.style.color = "#FFFFFF";
+    pDescription.style.color = "#FFFFFF";
     search.style.backgroundColor = "#1E2A47";
     main.style.backgroundColor = "#1E2A47";
     statsId.style.backgroundColor = "#141D2F";
@@ -105,14 +109,38 @@ button.addEventListener("click", function () {
     }
 })
 
-const obterDados = () => {
-    const url = "https://api.github.com/user";
-    fetch(url)
-     .then(res => res.json())
-     .then(dados => {
-         console.log(dados);
-     })
+botãoDeBusca.addEventListener("click", async (event) => {
+  event.preventDefault();
+  try {
+    const res = await axios.get(`https://api.github.com/users/` + searchInput.value);
+    const user = res.data;
+    h2.innerText = user.login;
+    FotoDoPerfil.src = user.avatar_url;
+    h3.innerText = `@${user.login}`;
+    pmain.innerText = `Joined ${user.created_at.slice(0, 10)}`
+    pDescription.innerText = user.bio;
+    td1_1.innerText = user.public_repos;
+    td2_2.innerText = user.followers;
+    td3_3.innerText = user.following;
+    plocation.innerText = user.location || "Not Available";
+    pwebsite.innerText = user.blog || "Not Available";
+    pTwitter.innerText = user.twitter_username || "Not Available";
+    pCompany.innerText = user.company || "Not Available";
+    console.log(user);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+function limparInput() {
+  searchInput.value = "";
 }
+botãoDeBusca.addEventListener("click", limparInput);
+
+
+
+  
+
 
 
 
