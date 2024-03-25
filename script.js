@@ -27,6 +27,7 @@ const botãoDeBusca = document.getElementById("botãoDeBuscaId");
 const searchInput = document.getElementById("searchInputId");
 const FotoDoPerfil = document.getElementById("FotoDoPerfilId");
 const h3 = document.getElementById("h3Id");
+const MensagemDeErroId = document.getElementById("MensagemDeErroId");
 
 let backgroundColorDark = false;
 
@@ -132,13 +133,25 @@ botãoDeBusca.addEventListener("click", async (event) => {
   }
 });
 
+
+
+function erro () {
+  if (searchInput.value === "") {
+    MensagemDeErroId.innerText = "nenhum resultado encontrado";
+    MensagemDeErroId.classList.add("text-red-500");
+  } else {
+    MensagemDeErroId.innerText = "";
+    MensagemDeErroId.classList.remove("text-yellow-500");
+  }
+  }
+
+botãoDeBusca.addEventListener("click", erro);
+
+
 function limparInput() {
   searchInput.value = "";
 }
 botãoDeBusca.addEventListener("click", limparInput);
-
-
-
   
 
 
